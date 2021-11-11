@@ -22,12 +22,18 @@ class Dec2Hex
 	String hexadecimal="";
         if (ArrayError==true){
                 System.out.println("Please try again with a valid number");
+		return "-1";
         }else if  (NumberError==true){
                 System.out.println("Please try again with a valid number");
+		return "-1";
         }else{
         num = Arg1;
         System.out.println("Converting the Decimal Value " + num + " to Hex...");
-        while(num != 0)
+        if (num==0){
+		return "0";
+	}else if (num <=-1){
+		return "-1";}
+	while(num != 0)
         {
             rem=num%16;
             hexadecimal= ch[rem] + hexadecimal;
@@ -40,6 +46,9 @@ class Dec2Hex
     public static void main(String args[])
     {
 	String Result = convert(args);
+	if (Result=="-1"){
+		System.out.println("Invalid Input");
+		return;}
 	System.out.println("Hexadecimal representation is: " + Result);
     }
 }
